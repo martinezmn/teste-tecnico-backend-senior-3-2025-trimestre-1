@@ -18,6 +18,7 @@ Para infra, vamos usar o seguinte conjunto:
 
 - [ ] um arquivo `Dockerfile` para fazer o build da imagem a partir da imagem `node:22-alpine`;
 - [ ] implementação de Terraform + provider voltado para o docker para subir os contêineres **localmente**.
+- [ ] Ainda na implementação do Terraform, implementar duas instâncias da aplicação + um proxy reverso de sua escolha + um servidor de caching em memória.
 
 Para testes, buscamos:
 
@@ -44,6 +45,7 @@ Acaso você esteja utilizando este projeto como um meio de estudo, nós o aconse
 
 Este teste busca avaliar as seguintes competências:
 
+- Capacidade de aplicação pertinente de Design Patterns;
 - Capacidade de interação com APIs de sistema;
 - Capacidade de desenvolver soluções que usam o conceito de concorrência para extrair maior desempenho do hardware;
 - Domínio sobre a linguagem JavaScript;
