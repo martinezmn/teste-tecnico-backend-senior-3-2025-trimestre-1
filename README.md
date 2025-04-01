@@ -17,6 +17,7 @@ A ideia é bem simples:
 Para infra, vamos usar o seguinte conjunto:
 
 - [ ] um arquivo `Dockerfile` para fazer o build da imagem a partir da imagem `node:22-alpine`;
+- [ ] um arquivo `docker-compose.yml` para orquestrar os contêineres relacionados à aplicação.
 
 Para testes, buscamos:
 
