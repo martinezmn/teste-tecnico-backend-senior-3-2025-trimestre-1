@@ -1,7 +1,7 @@
-# teste-tecnico-backend-senior-2025-trimestre-1
-Teste técnico para a posição de Backend Dev Sênior. Edição do primeiro trimestre de 2025.
+# teste-tecnico-backend-senior-2-2025-trimestre-1
+Teste técnico para a posição de Backend Dev Sênior. Segunda edição do primeiro trimestre de 2025.
 
-## A proposta: Upload e Exibição de Imagens + Cache + Testes + Docker + Terraform
+## A proposta: Upload e Exibição de Imagens + Cache + Testes + Docker
 
 A ideia é bem simples:
 
@@ -17,18 +17,15 @@ A ideia é bem simples:
 Para infra, vamos usar o seguinte conjunto:
 
 - [ ] um arquivo `Dockerfile` para fazer o build da imagem a partir da imagem `node:22-alpine`;
-- [ ] implementação de Terraform + provider voltado para o docker para subir os contêineres **localmente**.
-- [ ] Ainda na implementação do Terraform, implementar duas instâncias da aplicação + um proxy reverso de sua escolha + um servidor de caching em memória.
 
 Para testes, buscamos:
 
 - [ ] Testes unitários
 - [ ] Testes de integração (e2e)
-- [ ] Testes de estresse de endpoints (use a ferramenta que preferir)
 
 ## Pontos de Qualidade
 
-- A ideia inicial é que os arquivos sejam armazenados dentro do volume do container da aplicação, **mas que exista possibilidade de intercambiar o sistema de arquivos com um sistema externo, como por exemplo o AWS S3 (não necessário para o teste, apenas a intercambialidade)**
+- A ideia inicial é que os arquivos sejam armazenados dentro do volume do container da aplicação, podendo trocar livremente pra um provider S3. (Usar um S3 lookalike com docker para essa solução).
 - Teremos um cache de 60s de TTL para cada arquivo.
 - O arquivo deve estar disponível antes mesmo de ser persistido no sistema de arquivos.
 - O arquivo só deve ser lido a partir do sistema de arquivos se não houver cache válido para o mesmo.
@@ -50,6 +47,6 @@ Este teste busca avaliar as seguintes competências:
 - Capacidade de desenvolver soluções que usam o conceito de concorrência para extrair maior desempenho do hardware;
 - Domínio sobre a linguagem JavaScript;
 - Domínio sobre a runtime `node.js`;
-- Capacidade de organização de código (Adendo: organize da forma que for mais familiarizado, não estamos olhando para a estrutura de pastas, mas sim para a coesão e o desacoplamento) e
-- Capacidade de lidar com imagens e contêineres Docker.
-- Capacidade de lidar com infraestrutura como código (IaC).
+- Capacidade de lidar com imagens e contêineres Docker;
+- Capacidade de desenvolver soluções que possam rodar em modo dev localmente com docker. (Dev Experience) e
+- Capacidade de organização de código. Adendo: organize da forma que for mais familiarizado, não estamos olhando para a estrutura de pastas, mas sim para a coesão e o desacoplamento.
