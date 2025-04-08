@@ -1,5 +1,5 @@
-# teste-tecnico-backend-senior-2-2025-trimestre-1
-Teste técnico para a posição de Backend Dev Sênior. Segunda edição do primeiro trimestre de 2025.
+# teste-tecnico-backend-senior-3-2025-trimestre-1
+Teste técnico para a posição de Backend Dev Sênior. Terceira edição do primeiro trimestre de 2025.
 
 ## A proposta: Upload e Exibição de Imagens + Cache + Testes + Docker
 
@@ -33,7 +33,7 @@ Para testes, buscamos:
 
 ## Restrições ao código-fonte do Aplicativo.
 
-A única limitação é o uso requerido da runtime `node.js` e/ou extensões voltadas ao TypeScript, como por exemplo o `ts-node`, lib que fornece uma CLI para transpilar typescript e executar o resultado final usando node.
+A única limitação é o uso requerido da runtime `node.js` e extensões voltadas ao TypeScript, como por exemplo o `ts-node`, lib que fornece uma CLI para transpilar typescript e executar o resultado final usando node.
 
 Você tem total liberdade para usar as demais bibliotecas que mais lhe fornecerem produtividade.
 
@@ -47,6 +47,8 @@ Este teste busca avaliar as seguintes competências:
 - Capacidade de interação com APIs de sistema;
 - Capacidade de desenvolver soluções que usam o conceito de concorrência para extrair maior desempenho do hardware;
 - Domínio sobre a linguagem JavaScript;
+- Domínio sobre a linguagem TypeScript;
+- Domínio sobre conceitos de POO aplicada a projetos de mercado.
 - Domínio sobre a runtime `node.js`;
 - Capacidade de lidar com imagens e contêineres Docker;
 - Capacidade de desenvolver soluções que possam rodar em modo dev localmente com docker. (Dev Experience) e
