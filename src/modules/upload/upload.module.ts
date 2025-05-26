@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { UploadController } from './upload.controller';
 import { UploadService } from './upload.service';
-import { Cache } from 'src/contracts/cache.abstract';
-import { MemoryCacheService } from 'src/services/cache.service';
+import { Cache } from '../../contracts/cache.abstract';
+import { MemoryCacheService } from '../../services/cache.service';
 import { CacheModule } from '@nestjs/cache-manager';
 
 @Module({

@@ -1,7 +1,7 @@
 import { InjectQueue } from '@nestjs/bull';
 import { Queue } from 'bull';
 import { Injectable } from '@nestjs/common';
-import { QueueEvent } from 'src/enums/queue-event.enum';
+import { QueueEvent } from '../../../enums/queue-event.enum';
 
 @Injectable()
 export class UploadProducer {

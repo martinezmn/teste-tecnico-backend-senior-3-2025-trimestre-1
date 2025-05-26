@@ -1,8 +1,8 @@
 import { Process, Processor } from '@nestjs/bull';
 import { Job } from 'bull';
 import { Logger } from '@nestjs/common';
-import { QueueEvent } from 'src/enums/queue-event.enum';
-import { FileUpload } from 'src/contracts/file-upload.abstract';
+import { QueueEvent } from '../../../enums/queue-event.enum';
+import { FileUpload } from '../../../contracts/file-upload.abstract';
 
 @Processor(QueueEvent.UPLOAD_IMAGE)
 export class UploadProcessor {
