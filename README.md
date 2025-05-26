@@ -1,18 +1,35 @@
 # teste-tecnico-backend-senior-3-2025-trimestre-1
+
 Teste técnico para a posição de Backend Dev Sênior. Terceira edição do primeiro trimestre de 2025.
+
+## Rodando Testes
+
+```bash
+#### Testes Unitários ####
+$ npm run test:cov
+
+#### Testes E2E ####
+# Suba os containers dockers para servir redis e fakes3
+$ docker compose up
+
+# Entre no container do nest app
+$ docker exec -it eaipago-be sh
+
+$ npm run test:e2e
+```
 
 ## A proposta: Upload e Exibição de Imagens + Cache + Testes + Docker
 
 A ideia é bem simples:
 
 - [ ] uma rota `POST /upload/image` que recebe uma **única imagem** com limite de 5MB e
-    - [ ] compacta a imagem para reduzir o tamanho do arquivo salvo
-    - [ ] retorna o código de status 400 em caso de arquivo com tipo diferente de imagem (png, jpg, webp)
-    - [ ] retorna o código de status 413 em caso de arquivo com tamanho maior que 5MB
-    - [ ] retorna o código de status 204 em caso de sucesso
+  - [ ] compacta a imagem para reduzir o tamanho do arquivo salvo
+  - [ ] retorna o código de status 400 em caso de arquivo com tipo diferente de imagem (png, jpg, webp)
+  - [ ] retorna o código de status 413 em caso de arquivo com tamanho maior que 5MB
+  - [ ] retorna o código de status 204 em caso de sucesso
 - [ ] uma rota `GET /static/image/:filename` e
-    - [ ] retornando o código de status 404 em caso de não existência de um arquivo
-    - [ ] retornando a imagem com status 200 em caso de o arquivo existir no servidor
+  - [ ] retornando o código de status 404 em caso de não existência de um arquivo
+  - [ ] retornando a imagem com status 200 em caso de o arquivo existir no servidor
 
 Para infra, vamos usar o seguinte conjunto:
 

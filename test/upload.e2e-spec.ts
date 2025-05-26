@@ -48,7 +48,7 @@ describe('Upload e StaticController (e2e)', () => {
     const uploadRes = await request(app.getHttpServer())
       .post('/upload/image')
       .attach('file', testImagePath)
-      .expect(400);
+      .expect(413);
 
     expect(uploadRes.body.message).toBe('File size exceeds the limit of 5MB');
   });
