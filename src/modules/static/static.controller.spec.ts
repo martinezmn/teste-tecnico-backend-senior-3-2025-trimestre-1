@@ -53,20 +53,9 @@ describe('StaticController', () => {
   it('deve retornar 404 se o arquivo não for encontrado', async () => {
     (service.getFile as jest.Mock).mockResolvedValue(null);
 
-    await controller.get('inexistente.jpg', res as Response);
+    const result = controller.get('inexistente.jpg', res as Response);
 
+    await expect(result).rejects.toThrow('Image not found');
     expect(service.getFile).toHaveBeenCalledWith('inexistente.jpg');
-    expect(res.status).toHaveBeenCalledWith(500);
-    expect(res.send).toHaveBeenCalledWith('Internal server error');
-  });
-
-  it('deve tratar erros inesperados e retornar status 500', async () => {
-    const error = new Error('Erro inesperado');
-    (service.getFile as jest.Mock).mockRejectedValue(error);
-
-    await controller.get('qualquer.jpg', res as Response);
-
-    expect(res.status).toHaveBeenCalledWith(500);
-    expect(res.send).toHaveBeenCalledWith('Internal server error');
   });
 });

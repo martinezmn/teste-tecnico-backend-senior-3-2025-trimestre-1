@@ -2,7 +2,11 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { UploadService } from './upload.service';
 import { UploadProducer } from '../queue/processors/upload.producer';
 import { Cache } from '../../contracts/cache.abstract';
-import { BadRequestException, Logger } from '@nestjs/common';
+import {
+  BadRequestException,
+  Logger,
+  PayloadTooLargeException,
+} from '@nestjs/common';
 
 jest.mock('uuid', () => ({
   v4: () => 'uuid-mockado',
@@ -81,7 +85,7 @@ describe('UploadService', () => {
     } as Express.Multer.File;
 
     await expect(service.handleUpload(mockFile)).rejects.toThrow(
-      BadRequestException,
+      PayloadTooLargeException,
     );
     expect(uploadProducerMock.queue).not.toHaveBeenCalled();
     expect(cacheMock.set).not.toHaveBeenCalled();

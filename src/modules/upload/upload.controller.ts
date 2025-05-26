@@ -1,5 +1,7 @@
 import {
   Controller,
+  HttpCode,
+  HttpStatus,
   Post,
   UploadedFile,
   UseInterceptors,
@@ -13,6 +15,7 @@ export class UploadController {
 
   @Post('image')
   @UseInterceptors(FileInterceptor('file'))
+  @HttpCode(HttpStatus.NO_CONTENT)
   async upload(@UploadedFile() file: Express.Multer.File) {
     return this.uploadService.handleUpload(file);
   }

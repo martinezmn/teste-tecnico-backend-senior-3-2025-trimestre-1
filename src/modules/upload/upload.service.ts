@@ -1,11 +1,15 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  PayloadTooLargeException,
+} from '@nestjs/common';
 import { v4 as uuidv4 } from 'uuid';
 import { UploadProducer } from '../queue/processors/upload.producer';
 import { Cache } from '../../contracts/cache.abstract';
 
 @Injectable()
 export class UploadService {
-  private readonly allowedFileTypes = ['jpg', 'jpeg', 'png', 'gif'];
+  private readonly allowedFileTypes = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
   private readonly maxFileSize = 5 * 1024 * 1024;
 
   constructor(
@@ -21,7 +25,7 @@ export class UploadService {
       );
     }
     if (file.size > this.maxFileSize) {
-      throw new BadRequestException('File size exceeds the limit of 5MB');
+      throw new PayloadTooLargeException('File size exceeds the limit of 5MB');
     }
     const fileName = `${uuidv4()}.${fileExtension}`;
     await Promise.all([
