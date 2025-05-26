@@ -1,6 +1,11 @@
-import { Injectable } from '@nestjs/common';
-import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
+import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  S3Client,
+  PutObjectCommand,
+  GetObjectCommand,
+} from '@aws-sdk/client-s3';
 import { FileUpload } from '../contracts/file-upload.abstract';
+import { Readable } from 'stream';
 
 @Injectable()
 export class S3Service implements FileUpload {
@@ -26,5 +31,20 @@ export class S3Service implements FileUpload {
         Body: buffer,
       }),
     );
+  }
+
+  async getFile(bucket: string, fileName: string): Promise<Buffer> {
+    const res = await this.s3.send(
+      new GetObjectCommand({ Bucket: bucket, Key: fileName }),
+    );
+    if (!res.Body) {
+      throw new NotFoundException('File not found');
+    }
+    const stream = res.Body as Readable;
+    const chunks: Uint8Array[] = [];
+    for await (const chunk of stream) {
+      chunks.push(typeof chunk === 'string' ? Buffer.from(chunk) : chunk);
+    }
+    return Buffer.concat(chunks);
   }
 }

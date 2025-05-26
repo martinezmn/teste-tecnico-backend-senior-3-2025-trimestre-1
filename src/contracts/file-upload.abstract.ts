@@ -4,4 +4,6 @@ export abstract class FileUpload {
     filename: string,
     buffer: Buffer,
   ): Promise<void>;
+
+  abstract getFile(bucket: string, filename: string): Promise<Buffer>;
 }

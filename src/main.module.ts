@@ -1,15 +1,9 @@
 import { Module } from '@nestjs/common';
-import { CacheModule } from '@nestjs/cache-manager';
 import { QueueModule } from './modules/queue/queue.module';
 import { UploadModule } from './modules/upload/upload.module';
+import { StaticModule } from './modules/static/static.module';
 
 @Module({
-  imports: [
-    CacheModule.register({ isGlobal: true }),
-    QueueModule,
-    UploadModule,
-  ],
-  controllers: [],
-  providers: [],
+  imports: [QueueModule, UploadModule, StaticModule],
 })
 export class MainModule {}

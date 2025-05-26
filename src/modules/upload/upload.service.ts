@@ -1,7 +1,7 @@
-import { BadRequestException, Inject, Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { v4 as uuidv4 } from 'uuid';
-import { Cache } from 'cache-manager';
 import { UploadProducer } from '../queue/processors/upload.producer';
+import { Cache } from '../../contracts/cache.abstract';
 
 @Injectable()
 export class UploadService {
@@ -10,7 +10,7 @@ export class UploadService {
 
   constructor(
     private readonly uploadProducer: UploadProducer,
-    @Inject('CACHE_MANAGER') private readonly cacheManager: Cache,
+    private readonly cache: Cache,
   ) {}
 
   async handleUpload(file: Express.Multer.File) {
@@ -25,7 +25,7 @@ export class UploadService {
     }
     const fileName = `${uuidv4()}.${fileExtension}`;
     await Promise.all([
-      this.cacheManager.set(fileName, file.buffer, 60_000),
+      this.cache.set(fileName, file.buffer, 60_000),
       this.uploadProducer.queue({
         fileName,
         buffer: file.buffer.toString('base64'),
